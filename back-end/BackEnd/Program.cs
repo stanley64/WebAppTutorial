@@ -14,9 +14,19 @@ builder.Services.AddDbContext<CounterContext>(options =>
     var connectionString = configuration.GetConnectionString("Postgres");
     options.UseNpgsql(connectionString);
 });
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policyBuilder =>
+    {
+        policyBuilder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
+app.UseCors();
 app.MapGet("/", () => "Hello World!");
 app.MapControllers();
 
