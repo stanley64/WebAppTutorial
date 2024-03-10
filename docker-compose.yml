@@ -21,6 +21,14 @@ services:
     environment:
       ConnectionStrings__Postgres: "Host=postgres;Port=5432;Database=CounterDatabase;Username=postgres;Password=aadk"
 
+  front-end:
+    build: front-end
+    container_name: front-end
+    ports:
+      - "3000:3000"
+    networks:
+      - my-network
+
 volumes:
   data:
 
