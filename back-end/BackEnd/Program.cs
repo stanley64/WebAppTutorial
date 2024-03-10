@@ -24,6 +24,8 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddHostedService<DatabaseCreator>();
+
 var app = builder.Build();
 
 app.UseCors();
