@@ -1,0 +1,28 @@
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: aadk
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - my-network
+
+  back-end:
+    build: back-end/BackEnd
+    container_name: back-end
+    ports:
+      - "5000:5000"
+    networks:
+      - my-network
+    environment:
+      ConnectionStrings__Postgres: "Host=postgres;Port=5432;Database=CounterDatabase;Username=postgres;Password=aadk"
+
+volumes:
+  data:
+
+networks:
+  my-network:
