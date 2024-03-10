@@ -12,8 +12,6 @@ services:
     build: back-end/BackEnd
     container_name: back-end
     network_mode: host
-    environment:
-      ConnectionStrings__Postgres: "Host=postgres;Port=5432;Database=CounterDatabase;Username=postgres;Password=aadk"
 
   front-end:
     build: front-end
