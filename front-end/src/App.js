@@ -1,26 +1,27 @@
 import './App.css';
 import {useState} from 'react';
 import axios from 'axios';
+import config from './config';
 
 function App() {
   const [counter, setCounter] = useState(0);
 
   function getCounter() {
-    axios.get('http://localhost:5000/counter')
+    axios.get(`${config.backEndUrl}/counter`)
       .then(response => {
         setCounter(response.data)
       });
   }
 
   function incrementCounter() {
-    axios.put('http://localhost:5000/counter/increment')
+    axios.put(`${config.backEndUrl}/counter/increment`)
       .then(response => {
         setCounter(response.data)
       });
   }
 
   function decrementCounter() {
-    axios.put('http://localhost:5000/counter/decrement')
+    axios.put(`${config.backEndUrl}/counter/decrement`)
       .then(response => {
         setCounter(response.data)
       });
